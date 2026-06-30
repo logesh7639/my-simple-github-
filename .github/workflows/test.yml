@@ -1,21 +1,13 @@
-name: manual workflow
+name: Cron jobs
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Choose environment"
-        required: true
-        default: "dev"
-        type: choice
-        options:
-          - dev
-          - staging
-          - prod
+  schedule:
+    - cron: "30 2 * * 2"   # Every Tuesday at 08:00 AM IST
 
 jobs:
   demo:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print environment
-        run: echo "Running in ${{ github.event.inputs.environment }}"
+      - name: Information
+        run: echo "This job runs every Tuesday at 8:00 AM IST"
